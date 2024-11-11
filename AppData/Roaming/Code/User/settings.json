@@ -1,0 +1,27 @@
+{
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.mode": "none",
+    "telemetry.telemetryLevel": "off",
+    "workbench.startupEditor": "newUntitledFile",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "editor.fontFamily": "SauceCodePro NF",
+    "powershell.integratedConsole.showOnStartup": false,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "args": ["-l"],
+            "icon": "terminal-bash"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "git.autofetch": true
+}
