@@ -5,6 +5,7 @@ To get started, open Microsoft Store and ensure that all packages are updates.  
 Run these command from a Terminal (Admin).  Use WinKey-X
 ```
 Invoke-WebRequest -Uri https://github.com/ali-platform/boxstarter/raw/main/.config/dsc/admin.dsc.yaml -OutFile .\admin.dsc.yaml
+winget configure --enable
 winget configure --file .\admin.dsc.yaml --accept-configuration-agreements
 Remove-Item .\admin.dsc.yaml
 exit
