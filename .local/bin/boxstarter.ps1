@@ -36,6 +36,15 @@ if (-Not (Test-Path "$env:USERPROFILE\.kube")) { New-Item "$env:USERPROFILE\.kub
 if (-Not (Test-Path "$env:USERPROFILE\.kube\config")) { New-Item "$env:USERPROFILE\.kube\config" -ItemType File | Out-Null }
 $env:KUBECONFIG = "$env:USERPROFILE\.kube\config"
 [Environment]::SetEnvironmentVariable('KUBECONFIG', $env:KUBECONFIG, 'User')
+[Environment]::SetEnvironmentVariable('K6_CLOUD_TOKEN', 'placeholder', 'User')
+[Environment]::SetEnvironmentVariable('JIRA_USERNAME', 'placeholder', 'User')
+[Environment]::SetEnvironmentVariable('JIRA_TOKEN', 'placeholder', 'User')
+
+$winAppPath = "$($env:LOCALAPPDATA)\Microsoft\WindowsApps"
+$path = [Environment]::GetEnvironmentVariable('PATH', 'User')
+if (($path -split ';') -notcontains $winappPath) {
+  [Environment]::SetEnvironmentVariable('PATH', "$winAppPath;$path", 'User')
+}
 
 
 # Write-Host 'Install WSL Ubuntu' -ForegroundColor Yellow
