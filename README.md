@@ -13,7 +13,7 @@ exit
 
 Run these command from a Terminal.  Use WinKey-X.
 ```
-gh auth login
+gh auth login --scopes admin:enterprise,admin:org,admin:org_hook,admin:repo_hook,repo,workflow,write:packages
 ```
 
 Then run these commands
