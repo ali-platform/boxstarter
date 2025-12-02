@@ -2,7 +2,7 @@
 
 To get started, open Microsoft Store and ensure that all packages are updates.  This is needed to get the latest version of winget.
 
-Run these command from a Terminal (Admin).  Use WinKey-X
+Run these command from a Terminal (Admin Powershell).  Use WinKey-X
 ```
 Invoke-WebRequest -Uri https://github.com/ali-platform/boxstarter/raw/main/.config/dsc/admin.dsc.yaml -OutFile .\admin.dsc.yaml
 winget configure --enable
@@ -36,3 +36,4 @@ winget configure --file .\personalize.dsc.yaml --accept-configuration-agreements
 Remove-Item .\personalize.dsc.yaml
 exit
 ```
+
