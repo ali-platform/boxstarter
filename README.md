@@ -53,3 +53,4 @@ Remove-Item .\personalize.dsc.yaml
 exit
 ```
 
+To continue and set up WSL, see: https://github.com/ali-platform/dotfiles
