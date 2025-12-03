@@ -19,7 +19,7 @@ gh auth login --scopes admin:enterprise,admin:org,admin:org_hook,admin:repo_hook
 Then run these commands
 ```
 # Get current GitHub username (login)
-$GitHubUser = gh api user --jq '.login'
+$GitHubName = gh api user --jq '.name // .login'
 
 # Get all emails from GitHub, then pick the first one containing "acceleratelearning"
 $GitHubEmail = gh api user/emails --jq '.[].email' |
