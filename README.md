@@ -13,17 +13,33 @@ exit
 
 Run these command from a Terminal.  Use WinKey-X.
 ```
-gh auth login --scopes admin:enterprise,admin:org,admin:org_hook,admin:repo_hook,repo,workflow,write:packages
+gh auth login --scopes admin:enterprise,admin:org,admin:org_hook,admin:repo_hook,repo,workflow,write:packages,user:email
 ```
 
 Then run these commands
 ```
-$GitHubProfile = Get-Content "$($env:APPDATA)/GitHub CLI/hosts.yml" | ?{ $_ -match 'user:' } | %{ $_ -replace '\s+user:\s+','' }
+# Get current GitHub username (login)
+$GitHubUser = gh api user --jq '.login'
+
+# Get all emails from GitHub, then pick the first one containing "acceleratelearning"
+$GitHubEmail = gh api user/emails --jq '.[].email' |
+    Where-Object { $_ -like "*acceleratelearning*" } |
+    Select-Object -First 1
+
+# Dotfiles setup
 function dotfiles { git.exe --git-dir=$HOME\.cfg --work-tree=$HOME $args }
-git clone --bare "https://github.com/ali-platform/boxstarter.git" $HOME/.cfg
+
+git clone --bare "https://github.com/RobCannon/boxstarter.git" $HOME/.cfg
 dotfiles config --local status.showUntrackedFiles no
 dotfiles checkout -f main
 dotfiles push --set-upstream origin main
+
+# Update .gitconfig in $HOME
+$GitconfigPath = "$HOME\.gitconfig"
+(Get-Content $GitconfigPath) `
+    -replace '(^\s*name\s*=\s*).+$', "`$1$GitHubUser" `
+    -replace '(^\s*email\s*=\s*).+$', "`$1$GitHubEmail" |
+    Set-Content $GitconfigPath -Encoding UTF8
 
 . "$HOME\.local\bin\boxstarter.ps1"
 exit
