@@ -1,6 +1,6 @@
 # Windows and WSL BoxStarter
 
-To get started, open Microsoft Store and ensure that all packages are updates.  This is needed to get the latest version of winget.
+To get started, open Microsoft Store and ensure that all packages are updated.  This is needed to get the latest version of winget.
 
 Run these command from a Terminal (Admin Powershell).  Use WinKey-X
 ```
@@ -54,3 +54,4 @@ exit
 ```
 
 To continue and set up WSL, see: https://github.com/ali-platform/dotfiles
+
